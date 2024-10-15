@@ -3,6 +3,7 @@
 // SCORES
 //------------------//
 
+
 // Collect and store the two scores in variables
 const humanScore = 0;
 console.log("Computer score = " + humanScore);
@@ -14,38 +15,85 @@ console.log("--------------------");
 
 
 //------------------//
-// PROMPT TO PLAY
+// START GAME
 //------------------//
 
-
-function promptToPlay() {
-    let promptInput = prompt("Rock, paper or scissors?", "Enter your choice");    // Prompt user to play
-    return promptInput; // Stores human text input
+function play() {
+    getHumanChoice();
+    getComputerChoice();
 }
 
-let textInput = promptToPlay(); //Stores human text input into variable "textInput"
-console.log("promptToPlay() returns: " + textInput);
+
+
+//------------------
+// GET HUMAN CHOICE
+//-----------------.
+
+function getHumanChoice() {   // Receive user input
+    let promptInput = prompt("Rock, paper or scissors?", "Enter your choice");    // Prompt user to play
+    let humanChoice = promptInput.toLowerCase(); 
+    return humanChoice; // Stores human text input - should be all lowercase
+}
+
+let humanChoice = getHumanChoice();
+console.log("getHumanChoice() returns: " + humanChoice);
+
+//------------------//
+// GET COMPUTER CHOICE - COMPLETE
+//------------------//
+
+function getComputerChoice() {        
+
+    // Create a random number between 0 and 1, multiply by 100 to get a whole number between 0 and 100
+    let x = Math.floor(Math.random() * 100);
+    //console.log(compChoice);
+
+    // Assign random number to string
+    if (x < 33) {               // Rock < 33
+        let x = "rock";            
+        return("rock");  
+    } else if (x < 66) {        // Paper < 66
+        let x = "paper";   
+        return("paper");
+    } else {                    // Scissors
+        let x = "scissors"  
+        return("scissors");
+    }                 
+}
+
+let computerChoice = getComputerChoice();
+console.log("getComputerChoice() returns: " + computerChoice);
 
 
 //------------------//
-// GAME PLAY
-//------------------//
-
-getHumanChoice();
-getComputerChoice();
-
-
-
-//------------------//
-// PROBLEM SOLVING
+// HUMAN & COMPUTER COMPARE
 //------------------//
 
 
-// PROBLEM 1: How do I best call the prompt box for human choice?
-// If I have it in the function, it always prompts
-// If I have it out of the function, I need a way to deliver the human choice
-// to the getHumanChoice() function.
-// How do function returns work with strings?
+function getWinner() {
+
+    if (play() === "rock") {                // If Rock
+        return "rock";
+
+    } else if (play() === "paper") {        // If Else Paper
+        return "paper" ;
+
+    } else if (play() === "scissors") {     // If Else Scissors
+        return "scissors" ;
+    
+    } else {                                    // Incorrect text input -> Prompt user to play again
+
+//***********************FIX ME************** I only prompt three times
+    console.log("getWinner ran and will now play");    
+    return play();    
+                    
+    }
+}
+
+
+
+
+
 
 
 // whoWon();
@@ -71,67 +119,5 @@ getComputerChoice();
     // If player won, add one point to player score
 
 // Display them to the console
-
-
-
-//------------------//
-// HUMAN CHOICE - IN PROGRESS
-//------------------//
-
-function getHumanChoice() {
-
-    // Make text input all lowercase letters and hold in "userChoice"
-    let y = textInput.toLowerCase();
-
-    // Return treated "userChoice" string
-    if (y === "rock") {                // If Rock
-        return "rock";
-
-    } else if (y === "paper") {        // If Else Paper
-        return "paper" ;
-
-    } else if (y === "scissors") {     // If Else Scissors
-        return "scissors" ;
-    
-    } else {                                    // Incorrect text input -> Prompt user to play again
-
-//***********************FIX ME************** I only prompt one time
-        alert("Try again.")
-        return promptToPlay();                    
-    }
-}
-
-let humanChoice = getHumanChoice();
-console.log("getHumanChoice() returns: " + humanChoice);
-
-
-
-
-//------------------//
-// COMPUTER CHOICE - COMPLETE
-//------------------//
-
-function getComputerChoice() {        
-
-    // Create a random number between 0 and 1, multiply by 100 to get a whole number between 0 and 100
-    let x = Math.floor(Math.random() * 100);
-    //console.log(compChoice);
-
-    // Assign random number to string
-    if (x < 33) {               // Rock < 33
-        let x = "rock";            
-        return("rock");  
-    } else if (x < 66) {        // Paper < 66
-        let x = "paper";   
-        return("paper");
-    } else {                    // Scissors
-        let x = "scissors"  
-        return("scissors");
-    }                 
-}
-
-let compChoice = getComputerChoice();
-console.log("getComputerChoice() returns: " + compChoice);
-
 
 
