@@ -3,80 +3,135 @@
 // SCORES
 //------------------//
 
+// Collect and store the two scores in variables
 const humanScore = 0;
 console.log("Computer score = " + humanScore);
 
 const computerScore = 0;
 console.log("Your score = " + humanScore);
 
+console.log("--------------------");
 
 
 //------------------//
-// COMPUTER CHOICE
+// PROMPT TO PLAY
 //------------------//
 
-function getComputerChoice(text) {        
-   
-    // Create a random number between 0 and 1, multiply by 100 to get a whole number between 0 and 100
-    let compChoice = Math.floor(Math.random() * 100);
-    //console.log(compChoice);
 
-    // Assign random number to string
-    if (compChoice < 33) {               // Rock < 33
-        let compChoice = "Rock";
-        console.log("Computer chose rock.");             
-        return(compChoice);  
-    } else if (compChoice < 66) {        // Paper < 66
-        let compChoice = "Paper";
-        console.log("Computer chose paper.");   
-        return(compChoice);
-    } else {                    // Scissors
-        let compChoice = "Scissors"
-        console.log("Computer chose scissors.");   
-        return(compChoice);
-        
-    }                          
+function promptToPlay() {
+    let promptInput = prompt("Rock, paper or scissors?", "Enter your choice");    // Prompt user to play
+    return promptInput; // Stores human text input
 }
+
+let textInput = promptToPlay(); //Stores human text input into variable "textInput"
+console.log("promptToPlay() returns: " + textInput);
+
+
+//------------------//
+// GAME PLAY
+//------------------//
+
+getHumanChoice();
 getComputerChoice();
 
 
+
 //------------------//
-// HUMAN CHOICE
+// PROBLEM SOLVING
+//------------------//
+
+
+// PROBLEM 1: How do I best call the prompt box for human choice?
+// If I have it in the function, it always prompts
+// If I have it out of the function, I need a way to deliver the human choice
+// to the getHumanChoice() function.
+// How do function returns work with strings?
+
+
+// whoWon();
+
+// function whoWon() {
+//     // print who won
+
+//     //let human = getHumanChoice();
+//     //let computer = getComputerChoice
+
+//     if (getHumanChoice() === "rock" && getComputerChoice() === "scissors") {
+//         //|| getHumanChoice() === "paper" && getComputerChoice() === "rock"
+//         //|| getHumanChoice() === "scissors" && getComputerChoice() === "paper") {
+//         console.log("You won this round!");
+//         return("win");
+//     } else {
+//         console.log("You lost this round!");
+//         return("lose");
+//     }
+// }
+// Create function whoWon()
+    // If computer won, add 1 point to computer score
+    // If player won, add one point to player score
+
+// Display them to the console
+
+
+
+//------------------//
+// HUMAN CHOICE - IN PROGRESS
 //------------------//
 
 function getHumanChoice() {
 
-    // Prompt box
-    let textInput = prompt("Rock, paper or scissors?", "Enter your choice");    // Prompt user to play
-
     // Make text input all lowercase letters and hold in "userChoice"
-    let userChoice = textInput.toLowerCase();
+    let y = textInput.toLowerCase();
 
     // Return treated "userChoice" string
-    if (userChoice === "rock") {                // If Rock
+    if (y === "rock") {                // If Rock
+        return "rock";
 
-        let userChoice = "rock";
-        console.log("You chose rock.");
-        return("rock");
+    } else if (y === "paper") {        // If Else Paper
+        return "paper" ;
 
-    } else if (userChoice === "paper") {        // If Else Paper
-
-        let userChoice = "paper";
-        console.log("You chose paper.");
-        return("paper");
-
-    } else if (userChoice === "scissors") {     // If Else Scissors
-        let userChoice = "scissors";
-        console.log("You chose scissors.");
-        return("scissors");
+    } else if (y === "scissors") {     // If Else Scissors
+        return "scissors" ;
     
     } else {                                    // Incorrect text input -> Prompt user to play again
+
+//***********************FIX ME************** I only prompt one time
         alert("Try again.")
-        return(getHumanChoice());
+        return promptToPlay();                    
     }
-
-
-
 }
 
-getHumanChoice();
+let humanChoice = getHumanChoice();
+console.log("getHumanChoice() returns: " + humanChoice);
+
+
+
+
+//------------------//
+// COMPUTER CHOICE - COMPLETE
+//------------------//
+
+function getComputerChoice() {        
+
+    // Create a random number between 0 and 1, multiply by 100 to get a whole number between 0 and 100
+    let x = Math.floor(Math.random() * 100);
+    //console.log(compChoice);
+
+    // Assign random number to string
+    if (x < 33) {               // Rock < 33
+        let x = "rock";            
+        return("rock");  
+    } else if (x < 66) {        // Paper < 66
+        let x = "paper";   
+        return("paper");
+    } else {                    // Scissors
+        let x = "scissors"  
+        return("scissors");
+    }                 
+}
+
+let compChoice = getComputerChoice();
+console.log("getComputerChoice() returns: " + compChoice);
+
+
+
