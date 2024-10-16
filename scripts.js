@@ -16,8 +16,47 @@ console.log("--------------------");
 // START GAME
 //------------------//
 
-getHumanChoice()
-getComputerChoice()
+playRound()
+//getHumanChoice()
+//getComputerChoice()
+
+
+//------------------//
+// PLAY ROUND
+//------------------//
+
+
+function playRound(humanChoice, computerChoice) {
+    let x = humanScore; 
+    let y = computerScore;
+
+    if (   (humanChoice === "rock" && computerChoice === "scissors")    // IF winning condition, then display winner text and add point
+        || (humanChoice === "paper" && computerChoice === "rock")
+        || (humanChoice === "scissors" && computerChoice === "paper")    ) {
+
+        console.log("Round 1: WIN! User: " + ++x + ", Computer: " + y + ", You beat " + computerChoice + " with " + humanChoice + "!!!");
+        return ++x;
+
+    } else if (humanChoice === computerChoice && humanChoice !== undefined) {  //I had to add in undefined because the if statement was running when the arguments were still undefined
+        
+        return console.log("Round 1: TIE! Computer chose " + computerChoice + " and you chose " + humanChoice + "!!!");
+        
+    } else if (humanChoice === undefined && computerChoice === undefined) {     // See above, It seems to want to return something...
+        
+        return console.log("LET'S PLAY!");
+        
+    } else {
+        
+        return console.log("Round 1: LOSE! User: " + x + ", Computer: " + ++y + ", Computer beat " + humanChoice + " with " + computerChoice + "!!!");
+    }    
+}
+
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
+
 
 
 //------------------
@@ -33,7 +72,7 @@ function getHumanChoice(choice) {   // Receive user input
     || (humanChoice === "scissors")
     || (humanChoice === "paper") ) {
 
-    console.log("getHumanChoice returns: " + humanChoice); 
+    // console.log("getHumanChoice returns: " + humanChoice); 
     return humanChoice;
 
     } else {                                // ELSE call the function again to prompt input
@@ -56,15 +95,15 @@ function getComputerChoice() {
     // Assign random number to string
     if (x < 33) {               // Rock < 33
         let x = "rock"; 
-        console.log("getComputerChoice() returns: rock");           
+        // console.log("getComputerChoice() returns: rock");           
         return("rock");  
     } else if (x < 66) {        // Paper < 66
         let x = "paper"; 
-        console.log("getComputerChoice() returns: paper");  
+        // console.log("getComputerChoice() returns: paper");  
         return("paper");
     } else {                    // Else Scissors
         let x = "scissors"; 
-        console.log("getComputerChoice() returns: scissors"); 
+        // console.log("getComputerChoice() returns: scissors"); 
         return("scissors");
     }                
 }
@@ -80,39 +119,5 @@ function getComputerChoice() {
 
 
 
-
-
-
-//OLD CODE
-
-/*
-//RUN ORDER: 1
-// Checks text input to make sure it is rock, paper or scissors.
-// Calls the getHumanChoice() within it.
-function checkInput(text) {     
-    let input = getHumanChoice(); // FUNCTION CALL getHumanChoice()
-    console.log("checkInput returns: " + input);
- 
-    if ((input === "rock") 
-        || (input === "scissors")
-        || (input === "paper") ) {
-        console.log("User chose: " + input);
-        return input;
-      } else {
-        console.log("run checkInput again");
-        checkInput()
-      }
-}
-
-    //RUN ORDER: 2
-    function getHumanChoice(choice) {   // Receive user input
-        let promptInput = prompt("Rock, paper or scissors?", "Enter your choice");    // Prompt user to play
-        let humanChoice = promptInput.toLowerCase(); 
-        console.log("getHumanChoice() returns: " + humanChoice);
-        return humanChoice;
-    }
-
-
-*/
 
 
