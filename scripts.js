@@ -1,29 +1,12 @@
-/*
-My program
-Step 1:
-    - get the human choice as a text string
-        - I do this by:
-            prompting a text input
-    - then I change the prompt to lower case
-        - I do this by:
-            using the .toLowerCase() method inside the function
-    - once the text is lowercase, I can check to see if the text is the correct input
-    
-
-
-
-*/
 //------------------//
 // SCORES
 //------------------//
 
-
 // Collect and store the two scores in variables
 const humanScore = 0;
-//console.log("Computer score = " + humanScore);
-
+console.log("Computer score = " + "PLACEHOLDER");
 const computerScore = 0;
-//console.log("Your score = " + humanScore);
+console.log("Your score = " + "PLACEHOLDER");
 
 console.log("--------------------");
 
@@ -32,40 +15,32 @@ console.log("--------------------");
 // START GAME
 //------------------//
 
-checkInput();
+getHumanChoice()
+
+
+
 
 //------------------
 // GET HUMAN CHOICE
 //------------------
 
 
+function getHumanChoice(choice) {   // Receive user input
+    let promptInput = prompt("Rock, paper or scissors?", "Enter your choice");    // Prompt user to play
+    let humanChoice = promptInput.toLowerCase(); 
 
+    if ((humanChoice === "rock") 
+    || (humanChoice === "scissors")
+    || (humanChoice === "paper") ) {
 
-//RUN ORDER: 1
-// Checks text input to make sure it is rock, paper or scissors.
-// Calls the getHumanChoice() within it.
-function checkInput(text) {     
-    let input = getHumanChoice(); // FUNCTION CALL
-    console.log("checkInput returns: " + input);
-    if ((input === "rock") 
-        || (input === "scissors")
-        || (input === "paper") ) {
-        console.log("rock, paper, or scissors chosen");
-      } else {
-        console.log("run checkInput again");
-        checkInput()
-      }
-}
+    console.log("getHumanChoice returns: " + humanChoice);
+    return humanChoice;
 
-    //RUN ORDER: 2
-    function getHumanChoice(choice) {   // Receive user input
-        let promptInput = prompt("Rock, paper or scissors?", "Enter your choice");    // Prompt user to play
-        let humanChoice = promptInput.toLowerCase(); 
-        console.log("getHumanChoice() returns: " + humanChoice);
-        return humanChoice;
+    } else {
+    console.log("Input Failed: Run getHumanChoice again");
+    getHumanChoice()
     }
-
-
+}
 
 
 
@@ -107,27 +82,34 @@ console.log("getComputerChoice() returns: " + getComputerChoice());
 
 
 
-// whoWon();
+//OLD CODE
 
-// function whoWon() {
-//     // print who won
+/*
+//RUN ORDER: 1
+// Checks text input to make sure it is rock, paper or scissors.
+// Calls the getHumanChoice() within it.
+function checkInput(text) {     
+    let input = getHumanChoice(); // FUNCTION CALL getHumanChoice()
+    console.log("checkInput returns: " + input);
+ 
+    if ((input === "rock") 
+        || (input === "scissors")
+        || (input === "paper") ) {
+        console.log("User chose: " + input);
+        return input;
+      } else {
+        console.log("run checkInput again");
+        checkInput()
+      }
+}
 
-//     //let human = getHumanChoice();
-//     //let computer = getComputerChoice
+    //RUN ORDER: 2
+    function getHumanChoice(choice) {   // Receive user input
+        let promptInput = prompt("Rock, paper or scissors?", "Enter your choice");    // Prompt user to play
+        let humanChoice = promptInput.toLowerCase(); 
+        console.log("getHumanChoice() returns: " + humanChoice);
+        return humanChoice;
+    }
 
-//     if (getHumanChoice() === "rock" && getComputerChoice() === "scissors") {
-//         //|| getHumanChoice() === "paper" && getComputerChoice() === "rock"
-//         //|| getHumanChoice() === "scissors" && getComputerChoice() === "paper") {
-//         console.log("You won this round!");
-//         return("win");
-//     } else {
-//         console.log("You lost this round!");
-//         return("lose");
-//     }
-// }
-// Create function whoWon()
-    // If computer won, add 1 point to computer score
-    // If player won, add one point to player score
 
-// Display them to the console
-
+*/
