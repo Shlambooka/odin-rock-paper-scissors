@@ -1,12 +1,13 @@
+
 //------------------//
 // SCORES
 //------------------//
 
 // Collect and store the two scores in variables
 const humanScore = 0;
-console.log("Computer score = " + "PLACEHOLDER");
+console.log("Computer score = " + humanScore);
 const computerScore = 0;
-console.log("Your score = " + "PLACEHOLDER");
+console.log("Your score = " + computerScore);
 
 console.log("--------------------");
 
@@ -16,8 +17,7 @@ console.log("--------------------");
 //------------------//
 
 getHumanChoice()
-
-
+getComputerChoice()
 
 
 //------------------
@@ -27,28 +27,27 @@ getHumanChoice()
 
 function getHumanChoice(choice) {   // Receive user input
     let promptInput = prompt("Rock, paper or scissors?", "Enter your choice");    // Prompt user to play
-    let humanChoice = promptInput.toLowerCase(); 
+    let humanChoice = promptInput.toLowerCase();    // Transforms text to lower case
 
-    if ((humanChoice === "rock") 
+    if ((humanChoice === "rock")            // IF rock, paper OR scissors, return the text input
     || (humanChoice === "scissors")
     || (humanChoice === "paper") ) {
 
-    console.log("getHumanChoice returns: " + humanChoice);
+    console.log("getHumanChoice returns: " + humanChoice); 
     return humanChoice;
 
-    } else {
+    } else {                                // ELSE call the function again to prompt input
     console.log("Input Failed: Run getHumanChoice again");
     getHumanChoice()
     }
 }
 
 
-
 //------------------//
 // GET COMPUTER CHOICE - COMPLETE
 //------------------//
 
-function getComputerChoice(randomNumToString) {        
+function getComputerChoice() {        
 
     // Create a random number between 0 and 1, multiply by 100 to get a whole number between 0 and 100
     let x = Math.floor(Math.random() * 100);
@@ -56,18 +55,20 @@ function getComputerChoice(randomNumToString) {
 
     // Assign random number to string
     if (x < 33) {               // Rock < 33
-        let x = "rock";            
+        let x = "rock"; 
+        console.log("getComputerChoice() returns: rock");           
         return("rock");  
     } else if (x < 66) {        // Paper < 66
-        let x = "paper";   
+        let x = "paper"; 
+        console.log("getComputerChoice() returns: paper");  
         return("paper");
-    } else {                    // Scissors
-        let x = "scissors"  
+    } else {                    // Else Scissors
+        let x = "scissors"; 
+        console.log("getComputerChoice() returns: scissors"); 
         return("scissors");
-    }                 
+    }                
 }
 
-console.log("getComputerChoice() returns: " + getComputerChoice());
 
 //------------------//
 // HUMAN & COMPUTER COMPARE
@@ -113,3 +114,5 @@ function checkInput(text) {
 
 
 */
+
+
