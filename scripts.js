@@ -44,38 +44,50 @@ function playGame() {
 
     let outcome = playRound()
 
-    if (humanScore || computerScore === 2) {
+    if (humanScore == 2) {
+        return console.log("YOU WON THE GAME!!! Score is User: " + humanScore + " - Computer: " + computerScore)
+
+    } else if (computerScore == 2) {
+        return console.log("YOU LOST THE GAME!!! Score is User: " + humanScore + " - Computer: " + computerScore)
         
-        return console.log("GAME OVER! Score is User: " + humanScore + " - Computer: " + computerScore)
-
-    } else {  
-
-        if (outcome === "human" && humanScore <= 1) {
-            ++humanScore
+        
+    } else {
+        if (outcome === "human") {
             console.log("playGame() === human")  
-            console.log("----------------")
-            console.log("User: " + humanScore + " - Computer: " + computerScore) 
-            console.log("----------------")
-            return playGame()
-
-        } else if (outcome === "computer" && computerScore <= 1) {
-            ++computerScore
-            console.log("playGame() === computer")
+            ++humanScore
+           
             console.log("----------------")
             console.log("User: " + humanScore + " - Computer: " + computerScore)
             console.log("----------------")
-            return playGame()
+            
+            return playGame()  
+
+        } else if (outcome === "computer") {
+             console.log("playGame() === computer")
+            ++computerScore
+            
+            console.log("----------------")
+            console.log("User: " + humanScore + " - Computer: " + computerScore)
+            console.log("----------------")
+            
+            return playGame()   
 
         } else if (outcome === "tie") {
             console.log("playGame() === tie")
+            
             console.log("----------------")
             console.log("User: " + humanScore + " - Computer: " + computerScore)
             console.log("----------------")
-            return playGame()
+            
+            return playGame()   
+
+            }
         }
     }
     
-}
+
+    
+
     
 
 
