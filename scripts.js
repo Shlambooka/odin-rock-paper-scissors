@@ -1,24 +1,8 @@
-
-//------------------//
-// SCORES
-//------------------//
-
 // Collect and store the two scores in variables
 let humanScore = 0
 let computerScore = 0
 
-
-
-//------------------//
-// START GAME
-//------------------//
 playGame()
-
-
-//------------------//
-// PLAY GAME
-//------------------//
-
 
 /*
 The playGame() function adds one point to the total score
@@ -45,70 +29,49 @@ function playGame() {
     let outcome = playRound()
 
     if (outcome === "human") {
-        console.log("playGame() === human")  
         ++humanScore
 
-        if (humanScore == 2) {
+        if (humanScore == 3) {
             return console.log("YOU WON THE GAME!!! Score is User: " + humanScore + " - Computer: " + computerScore)
     
-        } else if (computerScore == 2) {
+        } else if (computerScore == 3) {
             return console.log("YOU LOST THE GAME!!! Score is User: " + humanScore + " - Computer: " + computerScore)
             
         } else {
-
-        console.log("----------------")
-        console.log("User: " + humanScore + " - Computer: " + computerScore)
-        console.log("----------------")
-
-        return playGame()
-        
+            console.log("----------------")
+            console.log("User: " + humanScore + " - Computer: " + computerScore)
+            console.log("----------------")
+            return playGame()
         }
-
     } else if (outcome === "computer") {
-            console.log("playGame() === computer")
         ++computerScore
         
-        if (humanScore == 2) {
+        if (humanScore == 3) {
+            console.log("----------------")
             return console.log("YOU WON THE GAME!!! Score is User: " + humanScore + " - Computer: " + computerScore)
     
-        } else if (computerScore == 2) {
+        } else if (computerScore == 3) {
+            console.log("----------------")
             return console.log("YOU LOST THE GAME!!! Score is User: " + humanScore + " - Computer: " + computerScore)
             
         } else {
-
-        console.log("----------------")
-        console.log("User: " + humanScore + " - Computer: " + computerScore)
-        console.log("----------------")
-
-        return playGame()
-        
+            console.log("----------------")
+            console.log("User: " + humanScore + " - Computer: " + computerScore)
+            console.log("----------------")
+            return playGame()
         }  
 
     } else if (outcome === "tie") {
-        console.log("playGame() === tie")
-        
         console.log("----------------")
         console.log("User: " + humanScore + " - Computer: " + computerScore)
         console.log("----------------")
-        
         return playGame()   
-
-        }
     }
+}
     
     
 
     
-
-    
-
-
-
-
-// Need SOMETHING to put into humanScore and computerScore
-
-
-
 //------------------//
 // PLAY ROUND
 //------------------//
@@ -145,18 +108,18 @@ function playRound(humanSelection, computerSelection) {
         || (humanChoice === "paper" && computerChoice === "rock")
         || (humanChoice === "scissors" && computerChoice === "paper")    ) {
 
-        //console.log("playRound(): You beat " + computerChoice + " with " + humanChoice + "!!!")
-        console.log("playRound(): YOU WON!")
+        console.log("You beat " + computerChoice + " with " + humanChoice + "!!!")
+        console.log("Round 1:You WON this round!")
         return "human"
 
     } else if (humanChoice === computerChoice) { 
-        //console.log("playRound(): You both chose " + computerChoice + "!!!")
-        console.log("playRound(): YOU TIED!")
+        console.log("You both chose " + computerChoice + "!!!")
+        console.log("You TIED this round!")
         return "tie"
                 
     } else {
-        //console.log("playRound(): Computer beat " + humanChoice + " with " + computerChoice + "!!!")
-        console.log("playRound(): LOST!")
+        console.log("Computer beat " + humanChoice + " with " + computerChoice + "!!!")
+        console.log("You LOST this round!")
         return "computer"
     }    
 }
@@ -174,10 +137,10 @@ function playRound(humanSelection, computerSelection) {
 function getHumanChoice(choice) {   // Receive user input
     let promptInput = prompt("Rock, paper or scissors?", "Enter your choice")    // Prompt user to play
     
-    // if (promptInput === null) {
-    // alert("Don't give up! Just keep trying!")
-    // getHumanChoice()
-    // } else {
+    if (promptInput === null) {
+    alert("Don't give up! Just keep trying!")
+    getHumanChoice()
+    } else {
     
     let humanChoice = promptInput.toLowerCase()    // Transforms text to lower case
 
@@ -193,7 +156,7 @@ function getHumanChoice(choice) {   // Receive user input
     getHumanChoice()
     }
 }
-//} <----- this is for the cancel button
+}
 
 
 //------------------//
