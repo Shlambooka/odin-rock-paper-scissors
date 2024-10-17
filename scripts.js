@@ -12,7 +12,7 @@ let computerScore = 0
 //------------------//
 // START GAME
 //------------------//
-
+playGame()
 
 
 //------------------//
@@ -44,46 +44,58 @@ function playGame() {
 
     let outcome = playRound()
 
-    if (humanScore == 2) {
-        return console.log("YOU WON THE GAME!!! Score is User: " + humanScore + " - Computer: " + computerScore)
+    if (outcome === "human") {
+        console.log("playGame() === human")  
+        ++humanScore
 
-    } else if (computerScore == 2) {
-        return console.log("YOU LOST THE GAME!!! Score is User: " + humanScore + " - Computer: " + computerScore)
+        if (humanScore == 2) {
+            return console.log("YOU WON THE GAME!!! Score is User: " + humanScore + " - Computer: " + computerScore)
+    
+        } else if (computerScore == 2) {
+            return console.log("YOU LOST THE GAME!!! Score is User: " + humanScore + " - Computer: " + computerScore)
+            
+        } else {
+
+        console.log("----------------")
+        console.log("User: " + humanScore + " - Computer: " + computerScore)
+        console.log("----------------")
+
+        return playGame()
         
+        }
+
+    } else if (outcome === "computer") {
+            console.log("playGame() === computer")
+        ++computerScore
         
-    } else {
-        if (outcome === "human") {
-            console.log("playGame() === human")  
-            ++humanScore
-           
-            console.log("----------------")
-            console.log("User: " + humanScore + " - Computer: " + computerScore)
-            console.log("----------------")
+        if (humanScore == 2) {
+            return console.log("YOU WON THE GAME!!! Score is User: " + humanScore + " - Computer: " + computerScore)
+    
+        } else if (computerScore == 2) {
+            return console.log("YOU LOST THE GAME!!! Score is User: " + humanScore + " - Computer: " + computerScore)
             
-            return playGame()  
+        } else {
 
-        } else if (outcome === "computer") {
-             console.log("playGame() === computer")
-            ++computerScore
-            
-            console.log("----------------")
-            console.log("User: " + humanScore + " - Computer: " + computerScore)
-            console.log("----------------")
-            
-            return playGame()   
+        console.log("----------------")
+        console.log("User: " + humanScore + " - Computer: " + computerScore)
+        console.log("----------------")
 
-        } else if (outcome === "tie") {
-            console.log("playGame() === tie")
-            
-            console.log("----------------")
-            console.log("User: " + humanScore + " - Computer: " + computerScore)
-            console.log("----------------")
-            
-            return playGame()   
+        return playGame()
+        
+        }  
 
-            }
+    } else if (outcome === "tie") {
+        console.log("playGame() === tie")
+        
+        console.log("----------------")
+        console.log("User: " + humanScore + " - Computer: " + computerScore)
+        console.log("----------------")
+        
+        return playGame()   
+
         }
     }
+    
     
 
     
