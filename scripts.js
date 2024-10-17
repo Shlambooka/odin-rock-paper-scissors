@@ -4,19 +4,14 @@
 //------------------//
 
 // Collect and store the two scores in variables
-let humanScore = 0;
-console.log("Computer score = " + humanScore)
-let computerScore = 0;
-console.log("Your score = " + computerScore)
+let humanScore = 0
+let computerScore = 0
 
-console.log("--------------------")
 
 
 //------------------//
 // START GAME
 //------------------//
-
-playGame()
 
 
 
@@ -26,43 +21,45 @@ playGame()
 
 
 /*
-The addPoint() function adds points to the winner
+The playGame() function adds one point to the total score
 
-    addPoint(human, computer) function takes:
-            - (x, y)
+    playGame() function takes:
+            - "human"
+            - "computer"
+            - "tie"
         from the following function:
-            - playRound() 
-        and places the number in the variables (respectively):
-            - x
-            - y
-        then counts the number of points up until:
-            - count === 5
+            -playRound()
+        and places the string in the variable:
+            -outcome
+        then compares using an if statement to place score in one of the following the variables:
+            - computerScore 
+            - humanScore 
         then returns:
-            - call playRound() to play another round
-            - or, ends the game with who won
+            - the total score
+
 
 */
 
 function playGame() {
-    
-    let [x, y] = playRound()
-    console.log("This is x: " + x + " This is y: " + y)
-    let humanScore = x + 1
-    let computerScore = y + 1
 
-    if (humanScore < 5) {
-        console.log("-------playGame---------")
-        console.log("playGame(): humanScore is: " + humanScore)
-        
-        return [x, y] = playRound()
-    } else if (computerScore < 5) {
-        console.log("-------playGame---------")
-        console.log("playGame(): computerScore is: " + computerScore)
-        return [x, y] = playRound()
-    } else {
-        return console.log("playGame(): END GAME")
+    let outcome = playRound()
+
+    console.log("User: " + humanScore + " - Computer: " + computerScore)
+
+    if (outcome === "human") {
+        ++humanScore
+        console.log("playGame() === human")   
+        return playGame()
+
+    } else if (outcome === "computer") {
+        ++computerScore
+        console.log("playGame() === computer")
+        return playGame()
+
+    } else if (outcome === "tie") {
+        console.log("playGame() === tie")
+        return playGame()
     }
- 
 }
 
 
@@ -76,7 +73,7 @@ function playGame() {
 //------------------//
 
 /*
-The playRound() function determines whether the user won, tied or lost
+The playRound() function determines who won the round and returns a string
 
     playRound() function takes:
             - "rock"
@@ -89,46 +86,40 @@ The playRound() function determines whether the user won, tied or lost
             - humanChoice
             - computerChoice
         then compares the two variables to determine whether the point goes to:
-            - user
+            - human
             - none
             - computer
-        then returns the values:
-            - [humanPoint, computerPoint]  I'M USING AN ARRAY BECAUSE THAT'S WHAT MAKES SENSE
+        then returns the string:
+            - "human"
+            - "computer"
+            - "tie"
 */
 
 function playRound(humanSelection, computerSelection) {
 
     const humanChoice = getHumanChoice()      // CALL getHumanChoice function and store result in humanSelection
     const computerChoice = getComputerChoice() // CALL getComputerChoice function and store result in computerSelection
-    
-    let x = humanScore
-    let y = computerScore
-
 
     if (   (humanChoice === "rock" && computerChoice === "scissors")    // IF winning condition, then display winner text and add point
         || (humanChoice === "paper" && computerChoice === "rock")
         || (humanChoice === "scissors" && computerChoice === "paper")    ) {
 
-        console.log("playRound(): You beat " + computerChoice + " with " + humanChoice + "!!!")
-        console.log("playRound(): Round 1: YOU WON!")
+        //console.log("playRound(): You beat " + computerChoice + " with " + humanChoice + "!!!")
+        console.log("playRound(): YOU WON!")
         console.log("---")
-        ++x
-        console.log("USER: " + x + " COMP: " + y)
-        return [x, y]
+        return "human"
 
     } else if (humanChoice === computerChoice) { 
-        console.log("playRound(): You both chose " + computerChoice + "!!!")
-        console.log("playRound(): Round 1: YOU TIED!")
+        //console.log("playRound(): You both chose " + computerChoice + "!!!")
+        console.log("playRound(): YOU TIED!")
         console.log("--------------------")
-        return playRound()
+        return "tie"
                 
     } else {
-        console.log("playRound(): Computer beat " + humanChoice + " with " + computerChoice + "!!!")
-        console.log("playRound(): Round 1: LOST!")
+        //console.log("playRound(): Computer beat " + humanChoice + " with " + computerChoice + "!!!")
+        console.log("playRound(): LOST!")
         console.log("---")
-        ++y
-        console.log("USER: " + x + " COMP: " + y)
-        return [x, y]
+        return "computer"
     }    
 }
 
@@ -145,10 +136,10 @@ function playRound(humanSelection, computerSelection) {
 function getHumanChoice(choice) {   // Receive user input
     let promptInput = prompt("Rock, paper or scissors?", "Enter your choice")    // Prompt user to play
     
-    if (promptInput === null) {
-    alert("Don't give up! Just keep trying!")
-    getHumanChoice()
-    } else {
+    // if (promptInput === null) {
+    // alert("Don't give up! Just keep trying!")
+    // getHumanChoice()
+    // } else {
     
     let humanChoice = promptInput.toLowerCase()    // Transforms text to lower case
 
@@ -164,7 +155,7 @@ function getHumanChoice(choice) {   // Receive user input
     getHumanChoice()
     }
 }
-}
+//} <----- this is for the cancel button
 
 
 //------------------//
