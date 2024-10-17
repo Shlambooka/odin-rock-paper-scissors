@@ -2,7 +2,7 @@
 let humanScore = 0
 let computerScore = 0
 
-playGame()
+
 
 /*
 The playGame() function adds one point to the total score
@@ -20,6 +20,8 @@ The playGame() function adds one point to the total score
             - humanScore 
         then returns:
             - the total score
+        
+        There is more going on of course. This function also includes nested if statements
 
 
 */
@@ -109,7 +111,7 @@ function playRound(humanSelection, computerSelection) {
         || (humanChoice === "scissors" && computerChoice === "paper")    ) {
 
         console.log("You beat " + computerChoice + " with " + humanChoice + "!!!")
-        console.log("Round 1:You WON this round!")
+        console.log("You WON this round!")
         return "human"
 
     } else if (humanChoice === computerChoice) { 
@@ -137,10 +139,10 @@ function playRound(humanSelection, computerSelection) {
 function getHumanChoice(choice) {   // Receive user input
     let promptInput = prompt("Rock, paper or scissors?", "Enter your choice")    // Prompt user to play
     
-    if (promptInput === null) {
-    alert("Don't give up! Just keep trying!")
-    getHumanChoice()
-    } else {
+    // if (promptInput === null) {                  //CANCEL BUTTON
+    // alert("Don't give up! Just keep trying!")
+    // getHumanChoice()
+    // } else {
     
     let humanChoice = promptInput.toLowerCase()    // Transforms text to lower case
 
@@ -156,7 +158,7 @@ function getHumanChoice(choice) {   // Receive user input
     getHumanChoice()
     }
 }
-}
+//} <----- this is for the cancel button
 
 
 //------------------//
