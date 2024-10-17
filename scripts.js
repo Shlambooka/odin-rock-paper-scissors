@@ -44,23 +44,40 @@ function playGame() {
 
     let outcome = playRound()
 
-    console.log("User: " + humanScore + " - Computer: " + computerScore)
+    if (humanScore || computerScore === 2) {
+        
+        return console.log("GAME OVER! Score is User: " + humanScore + " - Computer: " + computerScore)
 
-    if (outcome === "human") {
-        ++humanScore
-        console.log("playGame() === human")   
-        return playGame()
+    } else {  
 
-    } else if (outcome === "computer") {
-        ++computerScore
-        console.log("playGame() === computer")
-        return playGame()
+        if (outcome === "human" && humanScore <= 1) {
+            ++humanScore
+            console.log("playGame() === human")  
+            console.log("----------------")
+            console.log("User: " + humanScore + " - Computer: " + computerScore) 
+            console.log("----------------")
+            return playGame()
 
-    } else if (outcome === "tie") {
-        console.log("playGame() === tie")
-        return playGame()
+        } else if (outcome === "computer" && computerScore <= 1) {
+            ++computerScore
+            console.log("playGame() === computer")
+            console.log("----------------")
+            console.log("User: " + humanScore + " - Computer: " + computerScore)
+            console.log("----------------")
+            return playGame()
+
+        } else if (outcome === "tie") {
+            console.log("playGame() === tie")
+            console.log("----------------")
+            console.log("User: " + humanScore + " - Computer: " + computerScore)
+            console.log("----------------")
+            return playGame()
+        }
     }
+    
 }
+    
+
 
 
 
@@ -106,19 +123,16 @@ function playRound(humanSelection, computerSelection) {
 
         //console.log("playRound(): You beat " + computerChoice + " with " + humanChoice + "!!!")
         console.log("playRound(): YOU WON!")
-        console.log("---")
         return "human"
 
     } else if (humanChoice === computerChoice) { 
         //console.log("playRound(): You both chose " + computerChoice + "!!!")
         console.log("playRound(): YOU TIED!")
-        console.log("--------------------")
         return "tie"
                 
     } else {
         //console.log("playRound(): Computer beat " + humanChoice + " with " + computerChoice + "!!!")
         console.log("playRound(): LOST!")
-        console.log("---")
         return "computer"
     }    
 }
